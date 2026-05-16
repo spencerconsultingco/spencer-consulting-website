@@ -1,0 +1,141 @@
+@import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    margin: 0;
+    background: #fbfaf7;
+    color: #111821;
+    font-family: Inter, ui-sans-serif, system-ui, sans-serif;
+    text-rendering: geometricPrecision;
+  }
+
+  ::selection {
+    background: #a57742;
+    color: #fff;
+  }
+}
+
+@layer components {
+  .section {
+    @apply py-24 sm:py-28 lg:py-32;
+  }
+
+  .eyebrow {
+    @apply text-xs font-semibold uppercase tracking-[0.24em] text-brass;
+  }
+
+  .section-title {
+    @apply mt-5 font-serif text-5xl leading-[1.02] tracking-normal text-ink sm:text-6xl;
+  }
+
+  .section-copy {
+    @apply mt-6 text-lg leading-8 text-slate/78;
+  }
+
+  .button {
+    @apply inline-flex h-12 items-center justify-center gap-3 border px-5 text-sm font-semibold transition duration-300;
+  }
+
+  .button-primary {
+    @apply border-brass bg-brass text-white hover:border-white hover:bg-white hover:text-ink;
+  }
+
+  .button-secondary {
+    @apply border-current bg-transparent text-current hover:bg-white hover:text-ink;
+  }
+
+  .nav-link {
+    @apply text-sm font-medium text-white/68 transition hover:text-white;
+  }
+
+  .hero-panel {
+    @apply border border-white/12 bg-white/[0.075] p-7 shadow-soft backdrop-blur-2xl;
+  }
+
+  .leak-card {
+    @apply flex min-h-28 items-start gap-4 border border-line bg-white p-5 text-sm leading-6 text-slate shadow-fine;
+  }
+
+  .leak-card svg {
+    @apply mt-1 shrink-0 text-brass;
+  }
+
+  .process-card {
+    @apply min-h-80 border border-line bg-paper p-6 shadow-fine transition duration-300 hover:-translate-y-1 hover:shadow-soft;
+  }
+
+  .process-number {
+    @apply text-sm font-semibold tracking-[0.2em] text-brass;
+  }
+
+  .process-card h3,
+  .service-card h3,
+  .scenario-card h3 {
+    @apply mt-7 text-2xl font-semibold text-ink;
+  }
+
+  .process-card p,
+  .service-card p,
+  .scenario-card p {
+    @apply mt-4 text-sm leading-7 text-slate/75;
+  }
+
+  .service-card {
+    @apply min-h-72 border border-line bg-white p-7 shadow-fine transition duration-300 hover:-translate-y-1 hover:shadow-soft;
+  }
+
+  .service-icon {
+    @apply grid h-12 w-12 place-items-center border border-line bg-mist text-brass;
+  }
+
+  .why-row {
+    @apply flex items-center gap-4 border border-line bg-white px-5 py-4 text-sm font-medium text-slate shadow-fine;
+  }
+
+  .why-row svg {
+    @apply shrink-0 text-brass;
+  }
+
+  .scenario-card {
+    @apply border border-line bg-paper p-7 shadow-fine;
+  }
+
+  .audit-form {
+    @apply grid gap-5 border border-white/12 bg-white/[0.065] p-6 text-white shadow-soft backdrop-blur-xl sm:p-8;
+  }
+
+  .audit-form label {
+    @apply grid gap-2;
+  }
+
+  .audit-form label > span {
+    @apply text-sm font-medium text-white/72;
+  }
+
+  .audit-form input,
+  .audit-form textarea {
+    @apply w-full border border-white/14 bg-white/[0.08] px-4 py-3 text-base text-white outline-none transition placeholder:text-white/34 focus:border-brass focus:bg-white/[0.12];
+  }
+
+  .audit-form textarea {
+    @apply resize-none;
+  }
+}
+
+@media (max-width: 640px) {
+  .section-title {
+    font-size: 3rem;
+  }
+}
