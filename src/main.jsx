@@ -3,115 +3,118 @@ import { createRoot } from "react-dom/client";
 import { motion } from "framer-motion";
 import {
   ArrowRight,
-  CalendarCheck,
+  BarChart3,
   Check,
-  ClipboardList,
+  ChevronRight,
+  ClipboardCheck,
   Database,
-  LineChart,
+  Gauge,
+  Layers3,
   MailCheck,
   Menu,
-  MessagesSquare,
   PhoneCall,
-  SearchCheck,
-  Target,
+  Radar,
+  Route,
+  ShieldCheck,
+  SlidersHorizontal,
   X,
 } from "lucide-react";
 import "./styles.css";
 
-const fadeUp = {
-  initial: { opacity: 0, y: 26 },
+const reveal = {
+  initial: { opacity: 0, y: 22 },
   whileInView: { opacity: 1, y: 0 },
-  viewport: { once: true, margin: "-80px" },
-  transition: { duration: 0.65, ease: [0.22, 1, 0.36, 1] },
-};
-
-const stagger = {
-  initial: {},
-  whileInView: { transition: { staggerChildren: 0.09 } },
-  viewport: { once: true, margin: "-80px" },
+  viewport: { once: true, margin: "-100px" },
+  transition: { duration: 0.72, ease: [0.22, 1, 0.36, 1] },
 };
 
 const navItems = [
-  ["Audit", "#audit"],
-  ["Services", "#services"],
-  ["Process", "#process"],
-  ["Website Offer", "#website"],
+  ["The Audit", "#audit"],
+  ["Method", "#method"],
+  ["Systems", "#systems"],
+  ["Website", "#website"],
   ["Contact", "#contact"],
 ];
 
-const leaks = [
-  "Calls go unanswered while staff are with clients.",
-  "Website visitors leave before they understand how to book.",
-  "Follow-up happens hours later, or not at all.",
-  "Leads live across texts, forms, emails, notes, and spreadsheets.",
-  "Owners cannot see which opportunities are active, stalled, or lost.",
-  "Good businesses lose customers to faster competitors.",
+const leakPoints = [
+  ["Unanswered calls", "Prospects reach voicemail while the team is serving clients."],
+  ["Slow response", "Leads wait hours for a reply and book with the first business that responds."],
+  ["Weak booking path", "The website creates interest, then makes the next step unclear."],
+  ["Scattered pipeline", "Texts, forms, calls, DMs, and old leads live in separate places."],
+  ["No reactivation", "Past inquiries and no-shows are never followed up with again."],
+  ["Limited visibility", "The owner cannot see where opportunities are active, stalled, or lost."],
 ];
 
-const process = [
+const method = [
   {
-    title: "Audit",
-    text: "We review your website, lead flow, calls, booking process, CRM, and follow-up system to identify where opportunities are being lost.",
+    icon: Radar,
+    title: "Diagnose the revenue path",
+    text: "We map every touchpoint from first inquiry to booked appointment, then identify the points where speed, clarity, or ownership breaks down.",
   },
   {
-    title: "Prioritize",
-    text: "We identify the highest-impact fixes first, based on speed, cost, operational fit, and revenue potential.",
+    icon: SlidersHorizontal,
+    title: "Design the operating system",
+    text: "We define the simple, right-sized system your team needs: capture, route, respond, book, follow up, and report.",
   },
   {
-    title: "Implement",
-    text: "We build or improve the systems needed to capture leads, follow up faster, book more appointments, and track every opportunity.",
+    icon: Layers3,
+    title: "Build the working stack",
+    text: "We implement the website, CRM, automations, booking flow, call handling, and assistant workflows that support the customer journey.",
   },
   {
-    title: "Optimize",
-    text: "We review performance, improve weak points, and refine the system as your business grows.",
+    icon: Gauge,
+    title: "Operate and improve",
+    text: "We review what is working, tighten the weak points, and keep improving the system as the business grows.",
   },
 ];
 
-const services = [
+const systems = [
   {
-    icon: SearchCheck,
+    icon: ClipboardCheck,
     title: "Revenue System Audit",
-    text: "Identify gaps in your website, calls, booking process, follow-up, and CRM.",
+    text: "A clear assessment of where leads, calls, bookings, follow-up, and owner visibility are breaking down.",
   },
   {
-    icon: Target,
-    title: "Website & Funnel Optimization",
-    text: "Create a site that builds trust, explains your offer clearly, and moves visitors toward booking.",
+    icon: Route,
+    title: "Lead Capture & Booking Flow",
+    text: "A cleaner path from website visitor, phone call, or message to the next right action.",
   },
   {
     icon: PhoneCall,
-    title: "AI Receptionist & Call Handling",
-    text: "Capture missed calls, answer common questions, qualify leads, and route serious prospects.",
-  },
-  {
-    icon: MessagesSquare,
-    title: "Outbound Appointment Systems",
-    text: "Use targeted outreach and follow-up systems to start more conversations with qualified prospects.",
-  },
-  {
-    icon: Database,
-    title: "CRM & Pipeline Management",
-    text: "Track every lead, conversation, appointment, and deal in one organized system.",
+    title: "Inbound Call Handling",
+    text: "Missed-call recovery, routing, qualification, and practical assistant workflows for busy teams.",
   },
   {
     icon: MailCheck,
     title: "Follow-Up Automation",
-    text: "Automate SMS, email, reminders, callbacks, and no-answer follow-up so fewer leads fall through the cracks.",
+    text: "SMS, email, reminders, no-answer sequences, callbacks, and reactivation campaigns.",
+  },
+  {
+    icon: Database,
+    title: "CRM & Pipeline Management",
+    text: "Organized lead stages, owner visibility, task ownership, and a single source of truth.",
+  },
+  {
+    icon: BarChart3,
+    title: "Website & Funnel Optimization",
+    text: "Trust-building pages and landing flows that support the larger revenue system.",
   },
 ];
 
-const scenarios = [
-  ["Missed Calls", "A busy salon misses calls during appointments. We implement an inbound assistant and follow-up workflow so inquiries are captured automatically."],
-  ["No Website", "A service business has strong Google reviews but no professional site. We build a trust-focused presence that turns search traffic into inquiries."],
-  ["Slow Follow-Up", "A med spa responds when staff have time. We create workflows that follow up within minutes and keep prospects warm."],
-  ["Scattered Leads", "A business tracks opportunities across texts, notes, and spreadsheets. We centralize the pipeline so every lead has a clear next step."],
+const auditOutputs = [
+  "Lead source and response-time review",
+  "Website and booking-path diagnosis",
+  "Missed-call and no-answer workflow review",
+  "CRM and pipeline visibility assessment",
+  "Follow-up and reactivation opportunities",
+  "Prioritized implementation plan",
 ];
 
-function Button({ href, children, variant = "primary" }) {
+function Button({ href, children, tone = "dark" }) {
   return (
-    <a className={`button ${variant === "secondary" ? "button-secondary" : "button-primary"}`} href={href}>
+    <a href={href} className={`button ${tone === "light" ? "button-light" : "button-dark"}`}>
       <span>{children}</span>
-      <ArrowRight size={17} strokeWidth={2} />
+      <ArrowRight size={17} />
     </a>
   );
 }
@@ -120,242 +123,250 @@ function Header() {
   const [open, setOpen] = React.useState(false);
 
   return (
-    <header className="fixed left-0 right-0 top-0 z-50 border-b border-white/10 bg-navy/90 text-white backdrop-blur-xl">
-      <div className="mx-auto flex h-20 max-w-7xl items-center justify-between px-5 sm:px-8">
-        <a className="flex items-center gap-3" href="#top" aria-label="Spencer Consulting home">
-          <span className="grid h-10 w-10 place-items-center border border-white/20 bg-white/10 font-serif text-xl">S</span>
-          <span className="text-sm font-semibold uppercase tracking-[0.24em]">Spencer Consulting</span>
+    <header className="site-header">
+      <div className="header-inner">
+        <a href="#top" className="brand" aria-label="Spencer Consulting home">
+          <span className="brand-mark">SC</span>
+          <span>Spencer Consulting</span>
         </a>
-        <nav className="hidden items-center gap-8 lg:flex" aria-label="Primary navigation">
+        <nav className="desktop-nav" aria-label="Primary navigation">
           {navItems.map(([label, href]) => (
-            <a className="nav-link" href={href} key={label}>
+            <a href={href} key={label}>
               {label}
             </a>
           ))}
         </nav>
-        <div className="hidden lg:block">
-          <Button href="#contact">Book a Growth Audit</Button>
+        <div className="desktop-cta">
+          <Button href="#contact">Request Revenue Audit</Button>
         </div>
-        <button className="grid h-11 w-11 place-items-center border border-white/20 lg:hidden" onClick={() => setOpen((value) => !value)} aria-label="Toggle menu">
+        <button className="menu-button" onClick={() => setOpen((value) => !value)} aria-label="Toggle menu">
           {open ? <X size={20} /> : <Menu size={20} />}
         </button>
       </div>
       {open && (
-        <motion.div initial={{ opacity: 0, y: -12 }} animate={{ opacity: 1, y: 0 }} className="border-t border-white/10 bg-navy px-5 py-5 lg:hidden">
-          <nav className="grid gap-4" aria-label="Mobile navigation">
-            {navItems.map(([label, href]) => (
-              <a className="text-sm font-medium text-white/80" href={href} key={label} onClick={() => setOpen(false)}>
-                {label}
-              </a>
-            ))}
-            <Button href="#contact">Book a Growth Audit</Button>
-          </nav>
-        </motion.div>
+        <motion.nav initial={{ opacity: 0, y: -8 }} animate={{ opacity: 1, y: 0 }} className="mobile-nav" aria-label="Mobile navigation">
+          {navItems.map(([label, href]) => (
+            <a href={href} key={label} onClick={() => setOpen(false)}>
+              {label}
+            </a>
+          ))}
+          <Button href="#contact">Request Revenue Audit</Button>
+        </motion.nav>
       )}
     </header>
   );
 }
 
-function Hero() {
-  return (
-    <section id="top" className="relative overflow-hidden bg-navy pt-20 text-white">
-      <div className="absolute inset-0 opacity-[0.18]">
-        <img
-          src="https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&w=2200&q=85"
-          alt=""
-          className="h-full w-full object-cover"
-        />
-      </div>
-      <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(13,24,37,0.98)_0%,rgba(13,24,37,0.9)_42%,rgba(13,24,37,0.55)_100%)]" />
-      <div className="relative mx-auto grid min-h-[calc(100vh-5rem)] max-w-7xl items-center gap-12 px-5 py-20 sm:px-8 lg:grid-cols-[1.04fr_0.82fr] lg:py-24">
-        <motion.div {...fadeUp} className="max-w-3xl">
-          <p className="eyebrow text-white/70">Business growth and cash-flow optimization</p>
-          <h1 className="mt-7 max-w-4xl font-serif text-6xl leading-[0.92] tracking-normal sm:text-7xl lg:text-8xl">
-            Turn missed opportunities into booked appointments.
-          </h1>
-          <p className="mt-7 max-w-2xl text-lg leading-8 text-white/75 sm:text-xl">
-            Spencer Consulting helps local service businesses audit, improve, and automate the systems that turn calls, website visitors, and leads into paying customers.
-          </p>
-          <div className="mt-10 flex flex-col gap-4 sm:flex-row">
-            <Button href="#contact">Book a Growth Audit</Button>
-            <Button href="#process" variant="secondary">See How It Works</Button>
-          </div>
-        </motion.div>
-
-        <motion.div {...fadeUp} transition={{ ...fadeUp.transition, delay: 0.12 }} className="hidden lg:block">
-          <div className="hero-panel">
-            <div className="flex items-center justify-between border-b border-white/10 pb-5">
-              <div>
-                <p className="text-sm text-white/60">Revenue System Review</p>
-                <p className="mt-1 text-xl font-semibold">Lead to booked appointment</p>
-              </div>
-              <LineChart className="text-brass" size={28} />
-            </div>
-            <div className="mt-7 grid gap-4">
-              {["Website inquiry captured", "Missed call routed", "Follow-up sent", "Appointment booked"].map((item, index) => (
-                <div className="flex items-center justify-between bg-white/[0.06] px-4 py-4" key={item}>
-                  <span className="text-sm text-white/75">{item}</span>
-                  <span className={`h-2.5 w-2.5 ${index < 3 ? "bg-brass" : "bg-sage"}`} />
-                </div>
-              ))}
-            </div>
-            <div className="mt-7 border border-white/10 p-5">
-              <p className="text-3xl font-semibold">Cleaner path.</p>
-              <p className="mt-2 text-sm leading-6 text-white/60">Every channel gets a clear next step, so fewer opportunities disappear between inquiry and revenue.</p>
-            </div>
-          </div>
-        </motion.div>
-      </div>
-    </section>
-  );
-}
-
-function Problem() {
-  return (
-    <section id="audit" className="section bg-paper">
-      <div className="mx-auto grid max-w-7xl gap-12 px-5 sm:px-8 lg:grid-cols-[0.88fr_1.12fr]">
-        <motion.div {...fadeUp}>
-          <p className="eyebrow">The common problem</p>
-          <h2 className="section-title">Revenue rarely leaks from one obvious place.</h2>
-          <p className="section-copy">
-            Most businesses do not lose revenue because they lack talent. They lose revenue because the path from inquiry to booked appointment is broken. A missed call, a slow response, a confusing website, or an untracked follow-up can quietly cost thousands each month.
-          </p>
-        </motion.div>
-        <motion.div {...stagger} className="grid gap-3 sm:grid-cols-2">
-          {leaks.map((item) => (
-            <motion.div variants={fadeUp} className="leak-card" key={item}>
-              <Check size={18} />
-              <span>{item}</span>
-            </motion.div>
-          ))}
-        </motion.div>
-      </div>
-    </section>
-  );
-}
-
-function Process() {
-  return (
-    <section id="process" className="section bg-mist">
-      <div className="mx-auto max-w-7xl px-5 sm:px-8">
-        <motion.div {...fadeUp} className="max-w-3xl">
-          <p className="eyebrow">How it works</p>
-          <h2 className="section-title">We improve the revenue system before adding more complexity.</h2>
-        </motion.div>
-        <motion.div {...stagger} className="mt-14 grid gap-4 lg:grid-cols-4">
-          {process.map((step, index) => (
-            <motion.article variants={fadeUp} className="process-card" key={step.title}>
-              <span className="process-number">0{index + 1}</span>
-              <h3>{step.title}</h3>
-              <p>{step.text}</p>
-            </motion.article>
-          ))}
-        </motion.div>
-      </div>
-    </section>
-  );
-}
-
-function Services() {
-  return (
-    <section id="services" className="section bg-paper">
-      <div className="mx-auto max-w-7xl px-5 sm:px-8">
-        <motion.div {...fadeUp} className="grid gap-8 lg:grid-cols-[0.82fr_1fr] lg:items-end">
-          <div>
-            <p className="eyebrow">Services</p>
-            <h2 className="section-title">Practical systems that recover missed revenue.</h2>
-          </div>
-          <p className="section-copy">
-            Websites, CRM, call handling, outbound systems, automations, and AI assistants are treated as parts of one operating system: the path from interested prospect to booked appointment to paid client.
-          </p>
-        </motion.div>
-        <motion.div {...stagger} className="mt-14 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
-          {services.map(({ icon: Icon, title, text }) => (
-            <motion.article variants={fadeUp} className="service-card" key={title}>
-              <div className="service-icon"><Icon size={23} /></div>
-              <h3>{title}</h3>
-              <p>{text}</p>
-            </motion.article>
-          ))}
-        </motion.div>
-      </div>
-    </section>
-  );
-}
-
-function WebsiteOffer() {
-  const items = [
-    "Professionally built landing page or website",
-    "Mobile-responsive design",
-    "Clear offer positioning",
-    "Trust-building structure",
-    "Contact or booking integration",
-    "One revision round",
-    "Optional hosting and maintenance",
+function HeroSystem() {
+  const rows = [
+    ["Call", "No answer", "Recover"],
+    ["Website", "Unclear CTA", "Rebuild"],
+    ["Form", "Slow reply", "Automate"],
+    ["Old lead", "No follow-up", "Reactivate"],
   ];
 
   return (
-    <section id="website" className="section bg-navy text-white">
-      <div className="mx-auto grid max-w-7xl gap-12 px-5 sm:px-8 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
-        <motion.div {...fadeUp} className="relative min-h-[520px] overflow-hidden">
-          <img
-            src="https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=1400&q=85"
-            alt="Professional consultation at a service business"
-            className="absolute inset-0 h-full w-full object-cover"
-            loading="lazy"
-          />
-          <div className="absolute inset-0 bg-navy/25" />
-          <div className="absolute bottom-0 left-0 right-0 bg-white p-6 text-ink">
-            <p className="text-sm uppercase tracking-[0.2em] text-brass">First visible leak</p>
-            <p className="mt-3 text-2xl font-semibold">Strong reviews need a clear path to action.</p>
+    <motion.div {...reveal} className="system-board">
+      <div className="board-header">
+        <div>
+          <p>Revenue path</p>
+          <h2>Leak Review</h2>
+        </div>
+        <span>Live diagnostic</span>
+      </div>
+      <div className="path-line">
+        {["Inquiry", "Response", "Booking", "Revenue"].map((item) => (
+          <div key={item}>
+            <span />
+            <p>{item}</p>
+          </div>
+        ))}
+      </div>
+      <div className="board-table">
+        {rows.map(([source, issue, action]) => (
+          <div className="board-row" key={source}>
+            <strong>{source}</strong>
+            <span>{issue}</span>
+            <em>{action}</em>
+          </div>
+        ))}
+      </div>
+      <div className="board-note">
+        <ShieldCheck size={18} />
+        <p>No new complexity until the current revenue path is visible.</p>
+      </div>
+    </motion.div>
+  );
+}
+
+function HeroCommand() {
+  return (
+    <motion.div {...reveal} transition={{ ...reveal.transition, delay: 0.08 }} className="hero-command">
+      <div className="command-input">
+        <span>Where are appointments being lost?</span>
+        <button aria-label="Submit audit prompt">
+          <ArrowRight size={24} />
+        </button>
+      </div>
+      <div className="command-chips" aria-label="Common audit starting points">
+        {["Missed calls", "Slow follow-up", "Weak booking flow", "Scattered leads"].map((item) => (
+          <a href="#audit" key={item}>
+            {item}
+          </a>
+        ))}
+      </div>
+    </motion.div>
+  );
+}
+
+function Hero() {
+  const [position, setPosition] = React.useState({ x: 50, y: 44 });
+
+  function handlePointerMove(event) {
+    const bounds = event.currentTarget.getBoundingClientRect();
+    setPosition({
+      x: ((event.clientX - bounds.left) / bounds.width) * 100,
+      y: ((event.clientY - bounds.top) / bounds.height) * 100,
+    });
+  }
+
+  return (
+    <section
+      id="top"
+      className="hero"
+      onPointerMove={handlePointerMove}
+      style={{ "--cursor-x": `${position.x}%`, "--cursor-y": `${position.y}%` }}
+    >
+      <div className="hero-shadow hero-shadow-one" />
+      <div className="hero-shadow hero-shadow-two" />
+      <div className="hero-cursor-glow" />
+      <div className="hero-inner">
+        <motion.div {...reveal} className="hero-copy">
+          <p className="kicker">Revenue systems for local service businesses</p>
+          <h1>Recover the revenue hiding inside your current leads.</h1>
+          <p>
+            Spencer Consulting audits the path from first inquiry to booked appointment, then builds the websites, CRM workflows, call handling, automations, and AI assistants that keep qualified opportunities from slipping away.
+          </p>
+          <div className="hero-actions">
+            <Button href="#contact">Request Revenue Audit</Button>
+            <Button href="#audit" tone="light">See What We Review</Button>
           </div>
         </motion.div>
-        <motion.div {...fadeUp}>
-          <p className="eyebrow text-white/60">Website offer</p>
-          <h2 className="section-title text-white">A better website is often the first fix.</h2>
-          <p className="mt-6 text-lg leading-8 text-white/70">
-            For many businesses, the website is the first visible leak. If your business has strong reviews but no clear website, weak booking flow, or poor follow-up, we can build a professional site that gives customers confidence and makes it easier to take action.
+        <HeroCommand />
+        <motion.div {...reveal} transition={{ ...reveal.transition, delay: 0.16 }} className="hero-segments">
+          {["Beauty & wellness", "Med spas", "Home services", "Trades", "Appointment-based SMBs"].map((segment) => (
+            <span key={segment}>{segment}</span>
+          ))}
+        </motion.div>
+      </div>
+    </section>
+  );
+}
+
+function Audit() {
+  return (
+    <section id="audit" className="section paper">
+      <div className="split">
+        <motion.div {...reveal}>
+          <p className="kicker">The real problem</p>
+          <h2>Most service businesses do not have a lead problem first.</h2>
+          <p className="lead">
+            They have a response problem, a booking problem, a follow-up problem, or a visibility problem. The business may already be creating demand, but the path from interest to revenue is too easy to interrupt.
           </p>
-          <div className="mt-9 grid gap-3 sm:grid-cols-2">
-            {items.map((item) => (
-              <div className="flex items-start gap-3 border border-white/10 bg-white/[0.04] p-4" key={item}>
-                <Check className="mt-0.5 shrink-0 text-brass" size={17} />
-                <span className="text-sm leading-6 text-white/75">{item}</span>
+        </motion.div>
+        <motion.div {...reveal} className="leak-grid">
+          {leakPoints.map(([title, text]) => (
+            <article className="leak-card" key={title}>
+              <ChevronRight size={18} />
+              <div>
+                <h3>{title}</h3>
+                <p>{text}</p>
+              </div>
+            </article>
+          ))}
+        </motion.div>
+      </div>
+    </section>
+  );
+}
+
+function Method() {
+  return (
+    <section id="method" className="section dark">
+      <div className="section-head">
+        <motion.div {...reveal}>
+          <p className="kicker">The Spencer method</p>
+          <h2>From scattered activity to a revenue operating system.</h2>
+        </motion.div>
+        <motion.p {...reveal} className="lead">
+          The goal is not more software. The goal is a business that responds faster, follows up consistently, books cleanly, and gives the owner a clear view of every opportunity.
+        </motion.p>
+      </div>
+      <div className="method-grid">
+        {method.map(({ icon: Icon, title, text }, index) => (
+          <motion.article {...reveal} className="method-card" key={title}>
+            <span>0{index + 1}</span>
+            <Icon size={26} />
+            <h3>{title}</h3>
+            <p>{text}</p>
+          </motion.article>
+        ))}
+      </div>
+    </section>
+  );
+}
+
+function Systems() {
+  return (
+    <section id="systems" className="section warm">
+      <div className="section-head">
+        <motion.div {...reveal}>
+          <p className="kicker">What we build</p>
+          <h2>Every implementation supports the same commercial outcome.</h2>
+        </motion.div>
+        <motion.p {...reveal} className="lead">
+          More booked appointments. Faster response. Cleaner follow-up. Better owner visibility. AI and automation are used only where they make the business easier to run and harder to drop leads.
+        </motion.p>
+      </div>
+      <div className="systems-grid">
+        {systems.map(({ icon: Icon, title, text }) => (
+          <motion.article {...reveal} className="system-card" key={title}>
+            <Icon size={24} />
+            <h3>{title}</h3>
+            <p>{text}</p>
+          </motion.article>
+        ))}
+      </div>
+    </section>
+  );
+}
+
+function Website() {
+  return (
+    <section id="website" className="section paper website-section">
+      <div className="website-shell">
+        <motion.div {...reveal}>
+          <p className="kicker">Website as part of the system</p>
+          <h2>A better website is often the first visible fix, not the whole engagement.</h2>
+          <p className="lead">
+            If your business has strong reviews but a weak website, unclear offer, poor booking path, or disconnected follow-up, we can rebuild the public-facing experience and connect it to the operational system behind it.
+          </p>
+          <div className="check-list">
+            {["Professional landing page or website", "Mobile-first booking path", "Clear service positioning", "Trust and review structure", "Contact or calendar integration", "Optional hosting and maintenance"].map((item) => (
+              <div key={item}>
+                <Check size={17} />
+                <span>{item}</span>
               </div>
             ))}
           </div>
         </motion.div>
-      </div>
-    </section>
-  );
-}
-
-function Why() {
-  const points = [
-    "Business-first approach",
-    "Practical implementation, not theory",
-    "Systems designed around revenue",
-    "Clear communication",
-    "Built for busy service business owners",
-    "Automation used only where it improves the outcome",
-  ];
-
-  return (
-    <section className="section bg-paper">
-      <div className="mx-auto grid max-w-7xl gap-12 px-5 sm:px-8 lg:grid-cols-[1fr_0.9fr] lg:items-center">
-        <motion.div {...fadeUp}>
-          <p className="eyebrow">Why Spencer Consulting</p>
-          <h2 className="section-title">A serious operating partner for service businesses.</h2>
-          <p className="section-copy">
-            We do not add technology for the sake of technology. Every system we build has one purpose: help your business respond faster, follow up better, and convert more opportunities into revenue.
-          </p>
-        </motion.div>
-        <motion.div {...stagger} className="grid gap-3">
-          {points.map((point) => (
-            <motion.div variants={fadeUp} className="why-row" key={point}>
-              <CalendarCheck size={18} />
-              <span>{point}</span>
-            </motion.div>
+        <motion.div {...reveal} className="audit-output">
+          <p>Audit outputs</p>
+          {auditOutputs.map((item) => (
+            <div key={item}>
+              <Check size={16} />
+              <span>{item}</span>
+            </div>
           ))}
         </motion.div>
       </div>
@@ -363,54 +374,23 @@ function Why() {
   );
 }
 
-function Scenarios() {
+function Contact() {
   return (
-    <section className="section bg-mist">
-      <div className="mx-auto max-w-7xl px-5 sm:px-8">
-        <motion.div {...fadeUp} className="max-w-3xl">
-          <p className="eyebrow">Common revenue leak examples</p>
-          <h2 className="section-title">Small operational gaps become expensive when they repeat every week.</h2>
-        </motion.div>
-        <motion.div {...stagger} className="mt-14 grid gap-5 md:grid-cols-2">
-          {scenarios.map(([title, text]) => (
-            <motion.article variants={fadeUp} className="scenario-card" key={title}>
-              <h3>{title}</h3>
-              <p>{text}</p>
-            </motion.article>
-          ))}
-        </motion.div>
-      </div>
-    </section>
-  );
-}
-
-function CTA() {
-  return (
-    <section id="contact" className="section bg-ink text-white">
-      <div className="mx-auto grid max-w-7xl gap-12 px-5 sm:px-8 lg:grid-cols-[0.9fr_0.86fr] lg:items-start">
-        <motion.div {...fadeUp}>
-          <ClipboardList className="text-brass" size={36} />
-          <h2 className="mt-6 font-serif text-5xl leading-tight sm:text-6xl">Find out where your business is leaking revenue.</h2>
-          <p className="mt-6 max-w-3xl text-lg leading-8 text-white/70">
-            Book a Spencer Consulting audit and get a clear view of the systems, follow-up gaps, and conversion points that are costing you booked appointments.
+    <section id="contact" className="section contact">
+      <div className="contact-grid">
+        <motion.div {...reveal}>
+          <p className="kicker">Start here</p>
+          <h2>Request a Revenue Leak Audit.</h2>
+          <p className="lead">
+            Get a clear, practical view of where booked appointments are being lost and what should be fixed first.
           </p>
-          <div className="mt-9 grid gap-4 text-sm leading-6 text-white/70 sm:grid-cols-3">
-            <div className="border-l border-brass pl-4">Lead capture and booking flow review</div>
-            <div className="border-l border-brass pl-4">CRM and follow-up visibility check</div>
-            <div className="border-l border-brass pl-4">Prioritized implementation roadmap</div>
+          <div className="contact-points">
+            <span>Built for appointment-based local businesses</span>
+            <span>No fake complexity or software-first recommendations</span>
+            <span>Clear plan before implementation begins</span>
           </div>
         </motion.div>
-        <motion.form
-          {...fadeUp}
-          className="audit-form"
-          action="mailto:hello@spencerconsulting.com"
-          method="post"
-          encType="text/plain"
-        >
-          <div>
-            <p className="text-sm uppercase tracking-[0.22em] text-brass">Growth audit request</p>
-            <p className="mt-3 text-2xl font-semibold">Tell us where the system feels leaky.</p>
-          </div>
+        <motion.form {...reveal} className="contact-form" action="mailto:hello@spencerconsulting.com" method="post" encType="text/plain">
           <label>
             <span>Name</span>
             <input name="name" type="text" autoComplete="name" required />
@@ -421,19 +401,16 @@ function CTA() {
           </label>
           <label>
             <span>Business type</span>
-            <input name="business_type" type="text" placeholder="Med spa, salon, home services, wellness..." />
+            <input name="business_type" type="text" placeholder="Salon, med spa, trades, wellness..." />
           </label>
           <label>
-            <span>What needs attention?</span>
-            <textarea name="message" rows="4" placeholder="Missed calls, slow follow-up, weak website, scattered leads..." />
+            <span>Where are leads being lost?</span>
+            <textarea name="message" rows="4" placeholder="Missed calls, slow replies, no CRM, weak booking flow..." />
           </label>
-          <button className="button button-primary w-full" type="submit">
-            <span>Book a Growth Audit</span>
-            <ArrowRight size={17} strokeWidth={2} />
+          <button className="button button-dark" type="submit">
+            <span>Request Revenue Audit</span>
+            <ArrowRight size={17} />
           </button>
-          <a className="text-center text-sm font-medium text-white/70 transition hover:text-white" href="mailto:hello@spencerconsulting.com?subject=Consulting%20Conversation">
-            Or talk to Spencer Consulting first
-          </a>
         </motion.form>
       </div>
     </section>
@@ -442,20 +419,18 @@ function CTA() {
 
 function Footer() {
   return (
-    <footer className="bg-navy px-5 py-12 text-white sm:px-8">
-      <div className="mx-auto flex max-w-7xl flex-col gap-8 border-t border-white/10 pt-9 lg:flex-row lg:items-start lg:justify-between">
-        <div>
-          <p className="font-serif text-3xl">Spencer Consulting</p>
-          <p className="mt-3 max-w-lg text-sm leading-6 text-white/60">
-            Cash-flow optimization, websites, AI assistants, CRM, and automation systems for service businesses.
-          </p>
-        </div>
-        <nav className="flex flex-wrap gap-x-6 gap-y-3 text-sm text-white/60" aria-label="Footer navigation">
-          {navItems.map(([label, href]) => (
-            <a href={href} key={label}>{label}</a>
-          ))}
-        </nav>
+    <footer className="footer">
+      <div>
+        <strong>Spencer Consulting</strong>
+        <p>Revenue systems, websites, CRM, follow-up automation, call handling, and practical AI assistants for service businesses.</p>
       </div>
+      <nav aria-label="Footer navigation">
+        {navItems.map(([label, href]) => (
+          <a href={href} key={label}>
+            {label}
+          </a>
+        ))}
+      </nav>
     </footer>
   );
 }
@@ -466,13 +441,11 @@ function App() {
       <Header />
       <main>
         <Hero />
-        <Problem />
-        <Process />
-        <Services />
-        <WebsiteOffer />
-        <Why />
-        <Scenarios />
-        <CTA />
+        <Audit />
+        <Method />
+        <Systems />
+        <Website />
+        <Contact />
       </main>
       <Footer />
     </>
