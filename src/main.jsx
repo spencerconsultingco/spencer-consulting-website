@@ -144,7 +144,7 @@ function Header() {
         <motion.div initial={{ opacity: 0, y: -12 }} animate={{ opacity: 1, y: 0 }} className="border-t border-white/10 bg-navy px-5 py-5 lg:hidden">
           <nav className="grid gap-4" aria-label="Mobile navigation">
             {navItems.map(([label, href]) => (
-              <a className="text-sm font-medium text-white/82" href={href} key={label} onClick={() => setOpen(false)}>
+              <a className="text-sm font-medium text-white/80" href={href} key={label} onClick={() => setOpen(false)}>
                 {label}
               </a>
             ))}
@@ -169,11 +169,11 @@ function Hero() {
       <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(13,24,37,0.98)_0%,rgba(13,24,37,0.9)_42%,rgba(13,24,37,0.55)_100%)]" />
       <div className="relative mx-auto grid min-h-[calc(100vh-5rem)] max-w-7xl items-center gap-12 px-5 py-20 sm:px-8 lg:grid-cols-[1.04fr_0.82fr] lg:py-24">
         <motion.div {...fadeUp} className="max-w-3xl">
-          <p className="eyebrow text-white/66">Business growth and cash-flow optimization</p>
+          <p className="eyebrow text-white/70">Business growth and cash-flow optimization</p>
           <h1 className="mt-7 max-w-4xl font-serif text-6xl leading-[0.92] tracking-normal sm:text-7xl lg:text-8xl">
             Turn missed opportunities into booked appointments.
           </h1>
-          <p className="mt-7 max-w-2xl text-lg leading-8 text-white/76 sm:text-xl">
+          <p className="mt-7 max-w-2xl text-lg leading-8 text-white/75 sm:text-xl">
             Spencer Consulting helps local service businesses audit, improve, and automate the systems that turn calls, website visitors, and leads into paying customers.
           </p>
           <div className="mt-10 flex flex-col gap-4 sm:flex-row">
@@ -184,9 +184,9 @@ function Hero() {
 
         <motion.div {...fadeUp} transition={{ ...fadeUp.transition, delay: 0.12 }} className="hidden lg:block">
           <div className="hero-panel">
-            <div className="flex items-center justify-between border-b border-white/12 pb-5">
+            <div className="flex items-center justify-between border-b border-white/10 pb-5">
               <div>
-                <p className="text-sm text-white/55">Revenue System Review</p>
+                <p className="text-sm text-white/60">Revenue System Review</p>
                 <p className="mt-1 text-xl font-semibold">Lead to booked appointment</p>
               </div>
               <LineChart className="text-brass" size={28} />
@@ -194,14 +194,14 @@ function Hero() {
             <div className="mt-7 grid gap-4">
               {["Website inquiry captured", "Missed call routed", "Follow-up sent", "Appointment booked"].map((item, index) => (
                 <div className="flex items-center justify-between bg-white/[0.06] px-4 py-4" key={item}>
-                  <span className="text-sm text-white/78">{item}</span>
+                  <span className="text-sm text-white/75">{item}</span>
                   <span className={`h-2.5 w-2.5 ${index < 3 ? "bg-brass" : "bg-sage"}`} />
                 </div>
               ))}
             </div>
-            <div className="mt-7 border border-white/12 p-5">
+            <div className="mt-7 border border-white/10 p-5">
               <p className="text-3xl font-semibold">Cleaner path.</p>
-              <p className="mt-2 text-sm leading-6 text-white/62">Every channel gets a clear next step, so fewer opportunities disappear between inquiry and revenue.</p>
+              <p className="mt-2 text-sm leading-6 text-white/60">Every channel gets a clear next step, so fewer opportunities disappear between inquiry and revenue.</p>
             </div>
           </div>
         </motion.div>
@@ -304,7 +304,7 @@ function WebsiteOffer() {
             className="absolute inset-0 h-full w-full object-cover"
             loading="lazy"
           />
-          <div className="absolute inset-0 bg-navy/24" />
+          <div className="absolute inset-0 bg-navy/25" />
           <div className="absolute bottom-0 left-0 right-0 bg-white p-6 text-ink">
             <p className="text-sm uppercase tracking-[0.2em] text-brass">First visible leak</p>
             <p className="mt-3 text-2xl font-semibold">Strong reviews need a clear path to action.</p>
@@ -313,12 +313,12 @@ function WebsiteOffer() {
         <motion.div {...fadeUp}>
           <p className="eyebrow text-white/60">Website offer</p>
           <h2 className="section-title text-white">A better website is often the first fix.</h2>
-          <p className="mt-6 text-lg leading-8 text-white/72">
+          <p className="mt-6 text-lg leading-8 text-white/70">
             For many businesses, the website is the first visible leak. If your business has strong reviews but no clear website, weak booking flow, or poor follow-up, we can build a professional site that gives customers confidence and makes it easier to take action.
           </p>
           <div className="mt-9 grid gap-3 sm:grid-cols-2">
             {items.map((item) => (
-              <div className="flex items-start gap-3 border border-white/12 bg-white/[0.04] p-4" key={item}>
+              <div className="flex items-start gap-3 border border-white/10 bg-white/[0.04] p-4" key={item}>
                 <Check className="mt-0.5 shrink-0 text-brass" size={17} />
                 <span className="text-sm leading-6 text-white/75">{item}</span>
               </div>
@@ -391,10 +391,10 @@ function CTA() {
         <motion.div {...fadeUp}>
           <ClipboardList className="text-brass" size={36} />
           <h2 className="mt-6 font-serif text-5xl leading-tight sm:text-6xl">Find out where your business is leaking revenue.</h2>
-          <p className="mt-6 max-w-3xl text-lg leading-8 text-white/72">
+          <p className="mt-6 max-w-3xl text-lg leading-8 text-white/70">
             Book a Spencer Consulting audit and get a clear view of the systems, follow-up gaps, and conversion points that are costing you booked appointments.
           </p>
-          <div className="mt-9 grid gap-4 text-sm leading-6 text-white/68 sm:grid-cols-3">
+          <div className="mt-9 grid gap-4 text-sm leading-6 text-white/70 sm:grid-cols-3">
             <div className="border-l border-brass pl-4">Lead capture and booking flow review</div>
             <div className="border-l border-brass pl-4">CRM and follow-up visibility check</div>
             <div className="border-l border-brass pl-4">Prioritized implementation roadmap</div>
@@ -431,7 +431,7 @@ function CTA() {
             <span>Book a Growth Audit</span>
             <ArrowRight size={17} strokeWidth={2} />
           </button>
-          <a className="text-center text-sm font-medium text-white/68 transition hover:text-white" href="mailto:hello@spencerconsulting.com?subject=Consulting%20Conversation">
+          <a className="text-center text-sm font-medium text-white/70 transition hover:text-white" href="mailto:hello@spencerconsulting.com?subject=Consulting%20Conversation">
             Or talk to Spencer Consulting first
           </a>
         </motion.form>
@@ -443,14 +443,14 @@ function CTA() {
 function Footer() {
   return (
     <footer className="bg-navy px-5 py-12 text-white sm:px-8">
-      <div className="mx-auto flex max-w-7xl flex-col gap-8 border-t border-white/12 pt-9 lg:flex-row lg:items-start lg:justify-between">
+      <div className="mx-auto flex max-w-7xl flex-col gap-8 border-t border-white/10 pt-9 lg:flex-row lg:items-start lg:justify-between">
         <div>
           <p className="font-serif text-3xl">Spencer Consulting</p>
-          <p className="mt-3 max-w-lg text-sm leading-6 text-white/58">
+          <p className="mt-3 max-w-lg text-sm leading-6 text-white/60">
             Cash-flow optimization, websites, AI assistants, CRM, and automation systems for service businesses.
           </p>
         </div>
-        <nav className="flex flex-wrap gap-x-6 gap-y-3 text-sm text-white/64" aria-label="Footer navigation">
+        <nav className="flex flex-wrap gap-x-6 gap-y-3 text-sm text-white/60" aria-label="Footer navigation">
           {navItems.map(([label, href]) => (
             <a href={href} key={label}>{label}</a>
           ))}
